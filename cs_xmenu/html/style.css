@@ -1,0 +1,328 @@
+@import "compass/css3";
+
+*,
+*:before,
+*:after {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+	--Buttons: #044c6dcb;
+	--Border: #1f77b142;
+	--Gradient: radial-gradient(circle closest-side, #1f77b175, rgba(0, 0, 0, 0));
+	--Text: #cccccc;
+	--TextOnHover: #1F77B1;
+	--BorderOnHover: #1F77B1;
+	--Box-Shadow: #1f77b18a;
+}
+
+html,
+body {
+	height: 100%;
+	overflow: hidden;
+	align-items: center;
+	text-align: center;
+	user-select:none;
+}
+
+.absolute-center,
+.menu,
+.menu .btn .fa,
+.menu .btn.trigger .line {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translateX(-50%) translateY(-50%);
+}
+
+.menu {
+	width: 7.4vh;
+	height: 7.4vh;
+}
+
+.menu .btn:hover .btn_description {
+	opacity: 1;
+	margin-top: 0.6vh
+}
+
+.btn_description {
+	position: relative;
+	top: 64%;
+	left: 2%;
+	font-size: 1.4vh;
+	font-weight: bold;
+	text-transform: uppercase;
+	transition: .2s ease-in;
+	opacity: 0;
+	color: var(--Text);
+	align-items: center;
+	text-align: center;
+	font-family: 'Rajdhani', sans-serif;
+}
+
+.logo-container {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	left: -1.6vh;
+	top: 0vh;
+	color: var(--Text);
+	background-repeat: no-repeat;
+	background-size: 100%;
+	background: var(--Gradient);
+	filter: drop-shadow(0vh 0vh 0.5vh rgba(0, 0, 0, 0.24));
+	animation: 0.8s ease-out 0s 1 fadeIn;
+	pointer-events:none;
+}
+
+.logo {
+	position: absolute;
+	width: 26vh;
+	height: 26vh;
+	left: 50%;
+	top: 50%;
+	color: var(--Text);
+	filter: drop-shadow(0vh 0vh 0.5vh rgba(0, 0, 0, 0.24));
+	transform: translate(-50%, -50%);
+}
+
+.wrapper {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+    zoom:0.8;
+}
+
+.btn-image {
+	position: absolute;
+	width: 6vh;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	transition: 600ms
+}
+
+.menu .btn {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 160%;
+	height: 160%;
+	border-radius: 20%;
+	background: var(--Buttons);
+	border: var(--Border) 0.2vh solid;
+	color: var(--Text);
+	opacity: 0;
+	z-index: -10;
+	cursor: pointer;
+	transition: opacity 0.6s, z-index 0.3s, transform 1s;
+	transform: translateX(0);
+	box-shadow: inset 0 0 1.2vw #0000006b;
+	filter: drop-shadow(0vh 0vh 0.5vh rgba(0, 0, 0, 0.664));
+}
+
+.menu .btn .fa {
+	font-size: 3em;
+	transition: color 0.3s;
+	filter: drop-shadow(0vh 0vh 0.5vh rgba(0, 0, 0, 0.205));
+	transition: 600ms;
+}
+
+.menu .btn:hover {
+	color: var(--TextOnHover);
+	border: var(--BorderOnHover) 0.2vh solid;
+	box-shadow: 0vh 0vh 1vh 0.2vh var(--Box-Shadow);
+}
+
+.menu .btn:hover .btn-image {
+	margin-top: -1vh;
+}
+
+.menu .btn.trigger {
+	opacity: 1;
+	z-index: 100;
+	cursor: pointer;
+	transition: transform 0.4s;
+}
+
+.menu .btn.trigger:hover {
+	transform: scale(1.2);
+}
+
+.menu .btn.trigger:hover .line {
+	background-color: rgba(255, 255, 255, 0.7);
+}
+
+.menu .btn.trigger:hover .line:before,
+.menu .btn.trigger:hover .line:after {
+	background-color: rgba(255, 255, 255, 0.7);
+}
+
+.menu .btn.trigger .line {
+	width: 60%;
+	height: 0.6vh;
+	background: #cccccc;
+	border-radius: 0.6vh;
+	transition: background-color 0.3s, height 0.3s, top 0.3s;
+}
+
+.menu .btn.trigger .line:before,
+.menu .btn.trigger .line:after {
+	content: "";
+	display: block;
+	position: absolute;
+	left: 0;
+	width: 100%;
+	height: 0.6vh;
+	background: #cccccc;
+	border-radius: 0.6vh;
+	transition: background-color 0.3s, transform 0.3s;
+}
+
+.menu .btn.trigger .line:before {
+	top: -1.2vh;
+	transform-origin: 15% 100%;
+}
+
+.menu .btn.trigger .line:after {
+	top: 1.2vh;
+	transform-origin: 25% 30%;
+}
+
+.menu .rotater {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+    /* font-size:1.6vh; */
+	transform-origin: 50% 50%;
+}
+
+.menu.active .btn-icon {
+	opacity: 1;
+	z-index: 50;
+}
+
+.menu.active .trigger .line {
+	height: 0vh;
+	top: 45%;
+}
+
+.menu.active .trigger .line:before {
+	transform: rotate(45deg);
+	width: 110%;
+}
+
+.menu.active .trigger .line:after {
+	transform: rotate(-45deg);
+	width: 110%;
+}
+
+.rotater:nth-child(1) {
+	transform: rotate(-22.5deg);
+}
+
+.menu.active .rotater:nth-child(1) .btn-icon {
+	transform: translateY(-33.4vh) translateX(9.4vh) rotate(22.5deg);
+}
+
+.menu.active .rotater:nth-child(1) .btn-icon:hover {
+	transform: translateY(-35.4vh) translateX(10.2vh) rotate(22.5deg);
+}
+
+.rotater:nth-child(2) {
+	transform: rotate(22.5deg);
+}
+
+.menu.active .rotater:nth-child(2) .btn-icon {
+	transform: translateY(-32.8vh) translateX(9.2vh) rotate(-22.5deg);
+}
+
+.menu.active .rotater:nth-child(2) .btn-icon:hover {
+	transform: translateY(-34.8vh) translateX(10vh) rotate(-22.5deg);
+}
+
+.rotater:nth-child(3) {
+	transform: rotate(67.5deg);
+}
+
+.menu.active .rotater:nth-child(3) .btn-icon {
+	transform: translateY(-31.6vh) translateX(10vh) rotate(-67.5deg);
+}
+
+.menu.active .rotater:nth-child(3) .btn-icon:hover {
+	transform: translateY(-33.6vh) translateX(10.8vh) rotate(-67.5deg);
+}
+
+.rotater:nth-child(4) {
+	transform: rotate(112.5deg);
+}
+
+.menu.active .rotater:nth-child(4) .btn-icon {
+	transform: translateY(-32.6vh) translateX(11vh) rotate(-112.5deg);
+}
+
+.menu.active .rotater:nth-child(4) .btn-icon:hover {
+	transform: translateY(-34.6vh) translateX(11.8vh) rotate(-112.5deg);
+}
+
+.rotater:nth-child(5) {
+	transform: rotate(157.5deg);
+}
+
+.menu.active .rotater:nth-child(5) .btn-icon {
+	transform: translateY(-32.4vh) translateX(12.4vh) rotate(-157.5deg);
+}
+
+.menu.active .rotater:nth-child(5) .btn-icon:hover {
+	transform: translateY(-34.4vh) translateX(13.2vh) rotate(-157.5deg);
+}
+
+.rotater:nth-child(6) {
+	transform: rotate(202.5deg);
+}
+
+.menu.active .rotater:nth-child(6) .btn-icon {
+	transform: translateY(-33.5vh) translateX(11.4vh) rotate(-202.5deg);
+}
+
+.menu.active .rotater:nth-child(6) .btn-icon:hover {
+	transform: translateY(-35.5vh) translateX(12.2vh) rotate(-202.5deg);
+}
+
+.rotater:nth-child(7) {
+	transform: rotate(247.5deg);
+}
+
+.menu.active .rotater:nth-child(7) .btn-icon {
+	transform: translateY(-34.56vh) translateX(11vh) rotate(-247.5deg);
+}
+
+.menu.active .rotater:nth-child(7) .btn-icon:hover {
+	transform: translateY(-36.56vh) translateX(11.8vh) rotate(-247.5deg);
+}
+
+.rotater:nth-child(8) {
+	transform: rotate(292.5deg);
+}
+
+.menu.active .rotater:nth-child(8) .btn-icon {
+	transform: translateY(-34.68vh) translateX(10vh) rotate(-292.5deg);
+}
+
+.menu.active .rotater:nth-child(8) .btn-icon:hover {
+	transform: translateY(-36vh) translateX(10.8vh) rotate(-292.5deg);
+}
+
+@keyframes fadeIn {
+	0% {
+		opacity: 0;
+	}
+
+	100% {
+		opacity: 1.0;
+	}
+}
